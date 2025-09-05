@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 #Importing the dataset
-dataset = pd.read_scv('Data_csv')
+dataset = pd.read_csv('Data_csv')
 x = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 
@@ -21,13 +21,13 @@ ct = ColumnTransformer(transformers=[('encoder',OneHotEncoder(),[0])],remainder=
 x = np.array(ct.fit_transform(x))
 
 #Encoding the dependent variable
-from sk.learn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
 y = le.fit_transform(y)
 
 #Splitting the dataset into the training set and test set
 from sklearn.model_selection import train_test_split
-x_train, x_test, y_test = train_test_split(x,y, test_size = 0.2 , random_state = 1)
+x_train, x_test, y_train, y_test = train_test_split(x,y, test_size = 0.2 , random_state = 1)
 
 #Feature Scaling
 from sklearn.preprocessing import StandardScaler
