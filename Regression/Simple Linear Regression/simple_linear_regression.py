@@ -20,6 +20,5 @@ regressor.fit(x_train, y_train)
 #Predicting the Test set results
 y_pred = regressor.predict(x_test)
 
-#
 
 
